@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
-import { loginInitiate } from "../redux/actions";
+import {
+  facebookSignInInitiate,
+  googleSignInInitiate,
+  loginInitiate,
+} from "../redux/actions";
 import "./Login.css";
 
 const Login = () => {
@@ -31,9 +35,13 @@ const Login = () => {
     setLogin({ email: "", password: "" });
   };
 
-  const handleGoogleSignIn = () => {};
+  const handleGoogleSignIn = () => {
+    dispatch(googleSignInInitiate());
+  };
 
-  const handleFacebookSignIn = () => {};
+  const handleFacebookSignIn = () => {
+    dispatch(facebookSignInInitiate());
+  };
 
   const handleChange = (event) => {
     let { name, value } = event.target;
