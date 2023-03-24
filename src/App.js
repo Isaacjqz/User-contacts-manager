@@ -7,7 +7,9 @@ import Login from "./pages/Login";
 import { useDispatch } from "react-redux";
 import { auth } from "./firebase";
 import { setUser } from "./redux/actions";
-// import UserRoute from "./components/UserRoute";
+import Header from "./components/Header";
+import UserRoute from "./components/UserRoute";
+import AddEdit from "./pages/AddEdit";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,10 +27,27 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
+        <Header />
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route
+            exact
+            path="/"
+            element={
+              <UserRoute>
+                <Home />
+              </UserRoute>
+            }
+          />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
+          <Route
+            path="/addContact"
+            element={
+              <UserRoute>
+                <AddEdit />
+              </UserRoute>
+            }
+          />
         </Routes>
       </div>
     </BrowserRouter>
