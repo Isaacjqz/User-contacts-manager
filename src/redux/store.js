@@ -11,6 +11,7 @@ if (process.env.NODE_ENV === "development") {
 
 export const store = configureStore({
   reducer: rootReducer,
-  middleware: [...middleware],
+  middleware,
 });
 
+// : [...middleware]

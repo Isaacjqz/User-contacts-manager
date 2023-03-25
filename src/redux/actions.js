@@ -15,6 +15,8 @@ const registerFail = (error) => ({
   payload: error,
 });
 
+// -------------------------------------------------------------------------------
+
 const loginStart = () => ({
   type: types.LOGIN_START,
 });
@@ -29,6 +31,8 @@ const loginFail = (error) => ({
   payload: error,
 });
 
+// -------------------------------------------------------------------------------
+
 const logoutStart = () => ({
   type: types.LOGOUT_START,
 });
@@ -42,10 +46,14 @@ const logoutFail = (error) => ({
   payload: error,
 });
 
+// -------------------------------------------------------------------------------
+
 export const setUser = (user) => ({
   type: types.SET_USER,
   payload: user,
 });
+
+// -------------------------------------------------------------------------------
 
 const googleSignInStart = () => ({
   type: types.GOOGLE_SIGN_IN_START,
@@ -61,6 +69,8 @@ const googleSignInFail = (error) => ({
   payload: error,
 });
 
+// -------------------------------------------------------------------------------
+
 const facebookSignInStart = () => ({
   type: types.FACEBOOK_SIGN_IN_START,
 });
@@ -74,6 +84,8 @@ const facebookSignInFail = (error) => ({
   type: types.FACEBOOK_SIGN_IN_FAIL,
   payload: error,
 });
+
+// -------------------------------------------------------------------------------
 
 export const registerInitiate = (email, password, displayName) => {
   return function (dispatch) {
@@ -90,6 +102,8 @@ export const registerInitiate = (email, password, displayName) => {
   };
 };
 
+// -------------------------------------------------------------------------------
+
 export const loginInitiate = (email, password) => {
   return function (dispatch) {
     dispatch(loginStart);
@@ -102,6 +116,8 @@ export const loginInitiate = (email, password) => {
   };
 };
 
+// -------------------------------------------------------------------------------
+
 export const logoutInitiate = () => {
   return function (dispatch) {
     dispatch(logoutStart);
@@ -111,6 +127,8 @@ export const logoutInitiate = () => {
       .catch((error) => dispatch(logoutFail(error.message)));
   };
 };
+
+// -------------------------------------------------------------------------------
 
 export const googleSignInInitiate = () => {
   return function (dispatch) {
@@ -123,6 +141,8 @@ export const googleSignInInitiate = () => {
       .catch((error) => dispatch(googleSignInFail(error.message)));
   };
 };
+
+// -------------------------------------------------------------------------------
 
 export const facebookSignInInitiate = () => {
   return function (dispatch) {

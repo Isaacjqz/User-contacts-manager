@@ -5,7 +5,7 @@ import { registerInitiate } from "../redux/actions";
 import "./Register.css";
 
 const Register = () => {
-  const [signUp, setSignUp] = useState({
+  const [state, setState] = useState({
     displayName: "",
     email: "",
     password: "",
@@ -13,8 +13,8 @@ const Register = () => {
   });
 
   const { currentUser } = useSelector((state) => state.user);
-  const { email, password, displayName, passwordConfirm } = signUp;
-  const navigate = useNavigate();
+  const { email, password, displayName, passwordConfirm } = state;
+  const navigate = useNavigate;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -34,13 +34,13 @@ const Register = () => {
   const handleChange = (event) => {
     let { name, value } = event.target;
 
-    setSignUp({ ...signUp, [name]: value });
+    setState({ ...state, [name]: value });
   };
 
   return (
     <div>
       <div id="register-form">
-        <form className="form-signup" onSubmit={handleSubmit}>
+        <form className="form-state" onSubmit={handleSubmit}>
           <h1
             className="h3 mb-3 font-weight-normal"
             style={{ textAlign: "center" }}

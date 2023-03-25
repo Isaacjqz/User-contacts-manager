@@ -46,6 +46,17 @@
   margin-top: -2px !important;
 }
 
+.inputField {
+  width: 35% !important;
+  height: 35px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 15 !important;
+  margin-top: -2px !important;
+}
+
 @media screen and (max-width: 500px) {
   .header p {
     float: none;

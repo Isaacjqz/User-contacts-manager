@@ -1,18 +1,43 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutInitiate } from "../redux/actions";
 import "./Header.css";
 
 const Header = () => {
   const [activeTab, setActiveTab] = useState("Home");
+  const [search, setSearch] = useState("");
   const location = useLocation();
 
-  const { user } = useSelector((state) => ({ ...state.user }));
+  const navigate = useNavigate();
+
+  const { currentUser: user } = useSelector((state) => ({ ...state.user }));
   const dispatch = useDispatch();
 
   const handleAuth = () => {
     dispatch(logoutInitiate());
+  };
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      setActiveTab("Home");
+    } else if (location.pathname === "/addContact") {
+      setActiveTab("AddContact");
+    } else if (location.pathname === "/about") {
+      setActiveTab("About");
+    } else if (location.pathname === "/login") {
+      setActiveTab("SignIn");
+    }
+  }, [location]);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    navigate(`/search?name=${search}`);
+    setSearch("");
+  };
+
+  const handleChange = (event) => {
+    setSearch(event.target.value);
   };
 
   return (
@@ -20,8 +45,15 @@ const Header = () => {
       <Link to="/">
         <p className="logo">Contact App</p>
       </Link>
-
       <div className="header-right">
+        <form onSubmit={handleSubmit} style={{ display: "inline" }}>
+          <input
+            type="text"
+            className="inputField"
+            placeholder="Search Contact..."
+            onChange={handleChange}
+          />
+        </form>
         <Link to="/">
           <p
             className={`${activeTab === "Home" ? "active" : ""}`}
@@ -29,13 +61,18 @@ const Header = () => {
           >
             Home
           </p>
+        </Link>
+
+        <Link to="/addContact">
           <p
             className={`${activeTab === "AddContact" ? "active" : ""}`}
             onClick={() => setActiveTab("AddContact")}
           >
             Add Contact
           </p>
+        </Link>
 
+        <Link to="/about">
           <p
             className={`${activeTab === "About" ? "active" : ""}`}
             onClick={() => setActiveTab("About")}
@@ -43,17 +80,20 @@ const Header = () => {
             About
           </p>
         </Link>
+
         {user ? (
           <p style={{ cursor: "pointer" }} onClick={handleAuth}>
             Sign Out
           </p>
         ) : (
-          <p
-            className={`${activeTab === "SignIn" ? "active" : ""}`}
-            onClick={() => setActiveTab("SignIn")}
-          >
-            Sign In
-          </p>
+          <Link to="/login">
+            <p
+              className={`${activeTab === "SignIn" ? "active" : ""}`}
+              onClick={() => setActiveTab("SignIn")}
+            >
+              Sign In
+            </p>
+          </Link>
         )}
       </div>
     </div>
