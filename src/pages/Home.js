@@ -33,6 +33,20 @@ const Home = () => {
     }
   };
 
+  const filterData = (status) => {
+    firebaseDB
+      .child("contacts")
+      .orderByChild("status")
+      .equalTo(status)
+      .on("value", (snapshot) => {
+        if (snapshot.val) {
+          setData({ ...snapshot.val() });
+        } else {
+          setData({});
+        }
+      });
+  };
+
   return (
     <div style={{ marginTop: "100px" }}>
       <table className="style-table">
@@ -41,6 +55,7 @@ const Home = () => {
             <th style={{ textAlign: "center" }}>No.</th>
             <th style={{ textAlign: "center" }}>Name</th>
             <th style={{ textAlign: "center" }}>Email</th>
+            <th style={{ textAlign: "center" }}>Status</th>
             <th style={{ textAlign: "center" }}>Contact</th>
             <th style={{ textAlign: "center" }}>Action</th>
           </tr>
@@ -52,6 +67,7 @@ const Home = () => {
                 <th scope="row">{index + 1}</th>
                 <td>{data[id].name}</td>
                 <td>{data[id].email}</td>
+                <td>{data[id].status}</td>
                 <td>{data[id].contact}</td>
                 <td>
                   <Link to={`/update/${id}`}>
@@ -74,6 +90,16 @@ const Home = () => {
           })}
         </tbody>
       </table>
+      <label>Status:</label>
+      <button className="bttn btn-active" onClick={() => filterData("Active")}>
+        Active
+      </button>
+      <button
+        className="bttn btn-inactive"
+        onClick={() => filterData("Inactive")}
+      >
+        Inactive
+      </button>
     </div>
   );
 };

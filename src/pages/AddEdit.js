@@ -2,18 +2,20 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { db as firebaseDB } from "../firebase";
 import { toast } from "react-toastify";
+import "./AddEdit.css";
 
 const initialState = {
   name: "",
   email: "",
   contact: "",
+  status: "",
 };
 
 const AddEdit = () => {
   const [state, setState] = useState(initialState);
   const [data, setData] = useState({});
 
-  const { name, email, contact } = state;
+  const { name, email, contact, status } = state;
 
   const navigate = useNavigate();
 
@@ -44,7 +46,7 @@ const AddEdit = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (!name || !email || !contact) {
+    if (!name || !email || !contact || !status) {
       toast.error("Please provide valid information!");
     } else {
       if (!id) {
@@ -90,7 +92,7 @@ const AddEdit = () => {
           type="text"
           id="name"
           name="name"
-          place="Your name"
+          placeholder="Your name"
           value={name || ""}
           onChange={handleInputChange}
         />
@@ -99,7 +101,7 @@ const AddEdit = () => {
           type="email"
           id="email"
           name="email"
-          place="Your email"
+          placeholder="Your email"
           value={email || ""}
           onChange={handleInputChange}
         />
@@ -108,8 +110,17 @@ const AddEdit = () => {
           type="number"
           id="contact"
           name="contact"
-          place="Your Contact Number"
+          placeholder="Your Contact Number"
           value={contact || ""}
+          onChange={handleInputChange}
+        />
+        <label htmlFor="status">Status</label>
+        <input
+          type="text"
+          id="status"
+          name="status"
+          placeholder="Status"
+          value={status || ""}
           onChange={handleInputChange}
         />
         <input type="submit" value={id ? "Update" : "Save"} />
