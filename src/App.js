@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
@@ -9,8 +9,7 @@ import { auth } from "./firebase";
 import { setUser } from "./redux/actions";
 import UserRoute from "./components/UserRoute";
 import Header from "./components/Header";
-import AddEdit from "./pages/AddEdit";
-import About from "./pages/About";
+import AddEdit from "./pages/AddEdit"
 import View from "./pages/View";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -37,10 +36,9 @@ function App() {
         <Routes>
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
-          <Route path="/about" element={<About />} />
           {/* Protected routes  */}
           <Route element={<UserRoute />}>
-            <Route path="/" element={<Home />} />
+            <Route exact path="/" element={<Home />} />
             <Route path="/addContact" element={<AddEdit />} />
             <Route path="/update/:id" element={<AddEdit />} />
             <Route path="/view/:id" element={<View />} />

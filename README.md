@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+USER CONTACT MANAGER
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a contact manager web application built using React and Firebase. It allows users to manage their contacts, including adding, editing, and deleting contacts. Firebase is used for authentication, database storage, and file storage.
 
-## Available Scripts
+Features
 
-In the project directory, you can run:
+- Allows users to sign up and log in to their account
+- Users can add, edit, and delete contacts
+- Contact data is stored in Firebase Realtime Database
+- Routing between views is handled using React Router
+- Redux Thunk middleware is used to handle asynchronous actions, such as making API calls
+- Firebase is used for user authentication and authorization
 
-### `npm start`
+Deployment
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The application is deployed on Firebase hosting and can be accessed using the following URL:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+https://react-firebase-auth-16ed5.web.app/login
 
-### `npm test`
+- Dummy Email: ike@gmail.com
+- Dummy password: 1234567
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Getting Started
 
-### `npm run build`
+To run the application locally, follow these steps:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Clone the repository to your local machine
+- Navigate to the project directory and run npm install to install the necessary dependencies
+- Create a Firebase project and configure the Firebase SDK in the application (see below for instructions)
+- Run npm start to start the development server
+- Configuring Firebase
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To configure Firebase for the application, follow these steps:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Create a Firebase project in the Firebase console
+- Enable Firebase authentication and database storage for the project
+- Create a new web app in the Firebase console and copy the configuration object
+- Replace the configuration object in src/firebase/firebase.js with your own configuration object
+- Create a .env file in the root of the project and add the Firebase storage bucket URL as REACT_APP_STORAGE_BUCKET_URL=your_storage_bucket_url
 
-### `npm run eject`
+Technologies Used
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- React
+- Firebase
+- React Router
+- Redux Thunk
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Contributing
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Contributions to the project are welcome. To contribute, follow these steps:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Fork the project repository
+- Create a new branch for your feature or bug fix
+- Make changes to the code in your branch
+- Submit a pull request to the main repository
 
-## Learn More
+License
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License. See the LICENSE file for more information.

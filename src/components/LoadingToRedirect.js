@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const LoadingToRedirect = () => {
-  const [count, setCount] = useState(5);
+  const [count, setCount] = useState(3);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCount((currentCount) => --currentCount);
-    }, 1000);
+    }, 800);
 
     count === 0 && navigate("/login");
     return () => clearInterval(interval);

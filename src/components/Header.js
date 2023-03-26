@@ -23,8 +23,6 @@ const Header = () => {
       setActiveTab("Home");
     } else if (location.pathname === "/addContact") {
       setActiveTab("AddContact");
-    } else if (location.pathname === "/about") {
-      setActiveTab("About");
     } else if (location.pathname === "/login") {
       setActiveTab("SignIn");
     }
@@ -43,14 +41,14 @@ const Header = () => {
   return (
     <div className="header">
       <Link to="/">
-        <p className="logo">Contact App</p>
+        <p className="logo">My Contacts</p>
       </Link>
       <div className="header-right">
         <form onSubmit={handleSubmit} style={{ display: "inline" }}>
           <input
             type="text"
             className="inputField"
-            placeholder="Search Contact..."
+            placeholder="Search Contacts..."
             onChange={handleChange}
           />
         </form>
@@ -69,15 +67,6 @@ const Header = () => {
             onClick={() => setActiveTab("AddContact")}
           >
             Add Contact
-          </p>
-        </Link>
-
-        <Link to="/about">
-          <p
-            className={`${activeTab === "About" ? "active" : ""}`}
-            onClick={() => setActiveTab("About")}
-          >
-            About
           </p>
         </Link>
 

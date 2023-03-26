@@ -7,7 +7,7 @@ import "./AddEdit.css";
 const initialState = {
   name: "",
   email: "",
-  contact: "",
+  phone: "",
   status: "",
 };
 
@@ -15,7 +15,7 @@ const AddEdit = () => {
   const [state, setState] = useState(initialState);
   const [data, setData] = useState({});
 
-  const { name, email, contact, status } = state;
+  const { name, email, phone, status } = state;
 
   const navigate = useNavigate();
 
@@ -46,7 +46,7 @@ const AddEdit = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (!name || !email || !contact || !status) {
+    if (!name || !email || !phone || !status) {
       toast.error("Please provide valid information!");
     } else {
       if (!id) {
@@ -105,13 +105,13 @@ const AddEdit = () => {
           value={email || ""}
           onChange={handleInputChange}
         />
-        <label htmlFor="contact">Contact</label>
+        <label htmlFor="phone">Phone Number</label>
         <input
-          type="number"
-          id="contact"
-          name="contact"
-          placeholder="Your Contact Number"
-          value={contact || ""}
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="Your Phone Number"
+          value={phone || ""}
           onChange={handleInputChange}
         />
         <label htmlFor="status">Status</label>

@@ -30,21 +30,24 @@ const Search = () => {
     searchData();
   }, [search]);
 
-  console.log("data==>", data);
-
   return (
     <div style={{ marginTop: "100px" }}>
+      <Link to="/">
+        <button className="bttn btn-edit">Go Back</button>
+      </Link>
+      <br />
+      <br />
       {Object.keys(data).length === 0 ? (
         <h2>No Search Found: {query.get("name")}</h2>
       ) : (
-        <table className="style-table">
+        <table className="styled-table">
           <thead>
             <tr>
               <th style={{ textAlign: "center" }}>No.</th>
               <th style={{ textAlign: "center" }}>Name</th>
               <th style={{ textAlign: "center" }}>Email</th>
               <th style={{ textAlign: "center" }}>Status</th>
-              <th style={{ textAlign: "center" }}>Contact</th>
+              <th style={{ textAlign: "center" }}>Phone Number</th>
             </tr>
           </thead>
           <tbody>
@@ -55,7 +58,7 @@ const Search = () => {
                   <td>{data[id].name}</td>
                   <td>{data[id].email}</td>
                   <td>{data[id].status}</td>
-                  <td>{data[id].contact}</td>
+                  <td>{data[id].phone}</td>
                 </tr>
               );
             })}

@@ -39,8 +39,8 @@ const View = () => {
           <span>{user.email}</span>
           <br />
           <br />
-          <strong>Contact: </strong>
-          <span>{user.contact}</span>
+          <strong>Phone Number: </strong>
+          <span>{user.phone}</span>
           <br />
           <br />
           <Link to="/">
